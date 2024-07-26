@@ -1,0 +1,1241 @@
+<style>
+  * {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Calibri, "Trebuchet MS", sans-serif;
+  }
+  body {
+    background-color: rgb(255, 255, 255);
+  }
+  .tag {
+    width: 70px !important;
+    height: 25px !important;
+
+    font-size: 14px;
+    color: red;
+
+    margin-top: 10px;
+  }
+  .dest > div:hover {
+    background: #2f3268;
+    color: white;
+  }
+  .purp3-1 {
+    display: none;
+  }
+  .rht:hover {
+    background-color: #ff4040 !important;
+    color: white !important;
+  }
+  .rht:hover {
+    background-color: #ff4040 !important;
+    color: white !important;
+  }
+  .back:hover {
+    background-color: #ff4040;
+    color: white !important;
+  }
+  .hidden {
+    display: none;
+  }
+  .n-trav:hover {
+    background-color: #2f3268;
+    color: white;
+  }
+</style>
+
+<section class="d-flex w-100">
+  <div class="px-1" style="width: 55%">
+    <div class="mt-4 mx-2">
+      <h2
+        class="fw-bold"
+        style="font-family: Calibri, 'Trebuchet MS', sans-serif; color: #2f3268"
+      >
+        Generate Your Customized Itinerary
+      </h2>
+    </div>
+
+    <!-- date and empty space of continent -->
+    <div class="d-flex w-100 gap-5 my-2">
+      <div class="w-30"></div>
+
+      <!--Date  -->
+      <div
+        class="mt-4 d-flex flex-column justify-content-center align-items-center shadow py-1 ps-3"
+        style="
+          width: 50%;
+
+          background-color: #2f3268;
+          border-radius: 8px 8px 8px 8px;
+        "
+      >
+        <div
+          class="d-flex justify-content-between align-items-center"
+          style="width: 100%; padding-top: 3px; padding-right: 11px"
+        >
+          <div
+            class=""
+            style="font-size: 18px; color: white; margin-right: 6px"
+          >
+            Date
+          </div>
+          <div>
+            <input
+              ngxDaterangepickerMd
+              [(ngModel)]="dateRange"
+              placeholder="Select Date Range"
+              class="form-control"
+              style="
+                width: 158px;
+                height: 31px;
+                border-radius: 10px 10px 10px 10px;
+              "
+              [style.display]="datechng ? 'block' : 'none'"
+            />
+            <input
+              [(ngModel)]="dateRange"
+              placeholder="Select Date Range"
+              class="form-control"
+              style="
+                width: 158px;
+                height: 31px;
+                border-radius: 10px 10px 10px 10px;
+              "
+              [style.display]="datechng ? 'none' : 'block'"
+            />
+
+            <div
+              id="hiddenDiv"
+              class="hidden"
+              style="
+                width: 220px;
+                height: 150px;
+                position: absolute;
+                background-color: rgb(255, 255, 255);
+                border: 1px solid black;
+                border-radius: 10px 10px 10px 10px;
+              "
+            ></div>
+          </div>
+        </div>
+
+        <button
+          class="btn pt-0 mt-2 text-white"
+          (click)="dateReset()"
+          [style.display]="datechng ? 'none' : 'block'"
+          style="background-color: #ff4040; height: 27px"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+
+    <div class="d-flex w-100 gap-5 my-4">
+      <!--OLD Nationality -->
+      <!-- <div
+        class="my-2 shadow py-1 ps-2"
+        style="
+          width: 50%;
+          height: 47px;
+          background-color: #2f3268;
+          border-radius: 8px 8px 8px 8px;
+        "
+      >
+        <div
+          class="d-flex align-items-center"
+          style="width: 100%; padding-top: 3px"
+        >
+          <div
+            class=""
+            style="font-size: 18px; color: white; margin-right: 6px"
+          >
+            Nationality
+          </div>
+          <div>
+            <input
+              type="text"
+              id="textInput"
+              [(ngModel)]="itinerary.nationality"
+              class="form-control h-75"
+              placeholder="Enter Nationality"
+              style="width: 158px; border-radius: 10px 10px 10px 10px"
+            />
+            <div
+              id="hiddenDiv"
+              class="hidden"
+              style="
+                width: 220px;
+                height: 150px;
+                position: absolute;
+                background-color: rgb(255, 255, 255);
+                border: 1px solid black;
+                border-radius: 10px 10px 10px 10px;
+              "
+            ></div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- NEW Nationality -->
+      <div
+        class="card"
+        data-toggle="collapse"
+        data-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+        <div
+          class="card-header p-2"
+          id="headingOne"
+          style="
+            text-align: center;
+            display: flex;
+            height: 50px;
+            align-items: center;
+            width: 258px;
+            justify-content: space-between;
+          "
+        >
+          <a
+            class="btn btn-link p-2 mb-0 dropdown-toggle"
+            style="
+              color: #323268;
+              font-family: 'Lato', sans-serif;
+              font-size: medium;
+            "
+            data-toggle="collapse"
+            data-target="#collapseOne"
+            aria-expanded="true"
+            aria-controls="collapseOne"
+          >
+            Nationality
+          </a>
+          <ng-container *ngIf="guestNationality">
+            <p
+              style="font-size: 14px; font-weight: 600"
+              class="fw-bold py-2 px-2 m-0 text-dark"
+            >
+              {{ guestNationality }}
+            </p>
+          </ng-container>
+        </div>
+        <div
+          id="collapseOne"
+          class="collapse"
+          aria-labelledby="headingOne"
+          data-parent="#accordion"
+        >
+          <!-- Add dropdown content here -->
+          <div class="container-fluid mt-2">
+            <div
+              class="row input shadow-sm"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                border-radius: 10px;
+              "
+            >
+              <input
+                type="search"
+                id="form1"
+                class="form-control"
+                placeholder="Search Airports"
+                [(ngModel)]="nationalitySearchText"
+                (click)="$event.stopPropagation()"
+                (input)="onNationalityInputChange()"
+                aria-label="Search"
+              />
+              <div
+                style="width: 100%"
+                *ngIf="nationalitySearchArr && nationalitySearchArr.length > 0"
+              >
+                <h3 style="margin: 0">Nationalities:</h3>
+                <ul style="color: #000; list-style-type: none; padding: 0">
+                  <li
+                    *ngFor="let country of nationalitySearchArr"
+                    (click)="onCountrySelect(country)"
+                  >
+                    <ng-container *ngIf="country.country_code !== null">
+                      <div
+                        style="
+                          cursor: pointer;
+                          display: flex;
+                          width: 100%;
+                          border: 1px solid lightgray;
+                          border-radius: 5px;
+                          font-size: 13px;
+                          line-height: 21px;
+                          font-weight: 600;
+                          margin: 3px 0;
+                        "
+                      >
+                        <div
+                          style="
+                            display: flex;
+                            width: 90%;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          <h4 style="margin: 0">
+                            {{ country.nationality.join(", ") }}
+                          </h4>
+                          <h4 style="margin: 0">
+                            {{ country.country_name }}
+                          </h4>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No. of Travellers -->
+      <div class="my-2" style="width: 50%">
+        <div
+          class="shadow purp3"
+          (click)="show()"
+          style="
+            width: 100%;
+            height: 49px;
+            background-color: #2f3268;
+            border-radius: 8px 8px 8px 8px;
+          "
+        >
+          <div class="border-bottom p-2" style="height: 50px">
+            <div class="d-flex">
+              <h4 class="text-white mt-1 ms-2" style="font-size: 18px">
+                No. of Travellers
+              </h4>
+              <span class="material-symbols-outlined text-white mt-1">
+                chevron_right
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="py-2 my shadow purp3-1"
+          [style.display]="dis ? 'block' : 'none'"
+          style="
+            width: 260px;
+            height: 150px;
+            background-color: #2f3268;
+            border-radius: 0px 0px 8px 8px;
+            position: absolute;
+            z-index: 2;
+          "
+        >
+          <div
+            class="border rounded bg-white mx-3 px-2 pt-2"
+            style="height: 125px; width: 90%"
+          >
+            <div *ngFor="let traveller of travellerCount">
+              <h4 class="mx-4 d-flex justify-content-between">
+                <span class="fw-bold" style="font-size: 20px">{{traveller.type}}</span>
+                <span class="d-flex gap-1">
+                  <button
+                  (click)="ChngTraveller(traveller, 'dec')"
+                  class="px-2"
+                  style="width: 30px; height: 30px">
+                  -
+                </button>
+                  <span
+                    class="pt-1"
+                    style="
+                      width: 30px;
+                      height: 30px;
+                      color: grey;
+                      font-size: 18px;
+                      padding-left: 10px;
+                    ">
+                    {{ traveller.number }}
+                    </span>
+                    <button
+                    (click)="ChngTraveller(traveller, 'inc')"
+                    style="width: 30px; height: 30px">
+                    +
+                  </button>
+                  
+                  </span
+                >
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- depart and destination -->
+    <div class="d-flex w-100 gap-5 my-2">
+      <!-- departure -->
+      <!-- <div
+        class="shadow py-1 ps-2"
+        style="
+          width: 50%;
+          height: 47px;
+          background-color: #2f3268;
+          border-radius: 8px 8px 8px 8px;
+        "
+      >
+     
+
+        <div
+          class="d-flex justify-content-between align-items-center"
+          style="width: 100%; padding-top: 3px; padding-right: 7px"
+        >
+          <div
+            class=""
+            style="font-size: 18px; color: white; margin-right: 6px"
+          >
+            Departure
+          </div>
+          <div>
+            <input
+              type="text"
+              id="textInput"
+              class="form-control"
+              [(ngModel)]="itinerary.origin"
+              id="exampleFormControlInput1"
+              placeholder="Enter Departure"
+              style="
+                width: 158px;
+                height: 31px;
+                border-radius: 10px 10px 10px 10px;
+              "
+            />
+            <div
+              id="hiddenDiv"
+              class="hidden"
+              style="
+                width: 220px;
+                height: 150px;
+                position: absolute;
+                background-color: rgb(255, 255, 255);
+                border: 1px solid black;
+                border-radius: 10px 10px 10px 10px;
+              "
+            ></div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Departure -->
+      <div
+        class="card"
+        data-toggle="collapse"
+        data-target="#collapse4"
+        aria-expanded="false"
+        aria-controls="collapse4"
+      >
+        <div
+          class="card-header p-2"
+          id="heading4"
+          style="
+            text-align: center;
+            display: flex;
+            height: 50px;
+            align-items: center;
+            width: 258px;
+            justify-content: space-between;
+          "
+        >
+          <a
+            class="btn btn-link p-2 mb-0 dropdown-toggle"
+            style="
+              color: #323268;
+              font-family: 'Lato', sans-serif;
+              font-size: medium;
+            "
+            data-toggle="collapse"
+            data-target="#collapse4"
+            aria-expanded="true"
+            aria-controls="collapse4"
+          >
+            Departure
+          </a>
+
+          <ng-container *ngIf="selectedDeparture">
+            <p
+              style="font-size: 14px; font-weight: 600"
+              class="fw-bold py-2 px-2 m-0 text-dark"
+            >
+              {{ selectedDeparture.city_name }}
+            </p>
+          </ng-container>
+        </div>
+
+        <!-- the dropdown to choose from -->
+        <div
+          id="collapse4"
+          class="collapse"
+          aria-labelledby="heading4"
+          data-parent="#accordion"
+        >
+          <!-- Add dropdown content here -->
+          <div class="container-fluid mt-2">
+            <div
+              class="row input shadow-sm"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                border-radius: 10px;
+              "
+            >
+              <input
+                type="search"
+                id="form1"
+                class="form-control"
+                placeholder="Search Airports"
+                [(ngModel)]="departureSearchText"
+                (click)="$event.stopPropagation()"
+                (input)="onDepartureInputChange()"
+                aria-label="Search"
+              />
+              <!-- Airports -->
+              <div
+                style="width: 100%"
+                *ngIf="
+                  departureSearchAirports && departureSearchAirports.length > 0
+                "
+              >
+                <h3 style="margin: 0">Airports:</h3>
+                <ul style="color: #000; list-style-type: none; padding: 0">
+                  <li
+                    *ngFor="let airport of departureSearchAirports"
+                    (click)="onDepartureSelect(airport, 1)"
+                  >
+                    <ng-container *ngIf="airport.iata !== null">
+                      <div
+                        style="
+                          cursor: pointer;
+                          display: flex;
+                          width: 100%;
+                          border: 1px solid lightgray;
+                          border-radius: 5px;
+                          font-size: 13px;
+                          line-height: 21px;
+                          font-weight: 600;
+                          margin: 3px 0;
+                        "
+                      >
+                        <span
+                          style="
+                            width: 10%;
+                            margin: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                          class="emoji"
+                          >{{ airport.emoji }}</span
+                        >
+                        <div
+                          style="
+                            display: flex;
+                            width: 90%;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          <h4 style="margin: 0">
+                            {{ airport.iata }} - {{ airport.name }}
+                          </h4>
+                          <h4 style="margin: 0">
+                            {{ airport.city || airport.city_alias }},{{
+                              airport.country_name
+                            }}
+                          </h4>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </li>
+                </ul>
+              </div>
+              <!-- cities -->
+              <div
+                style="width: 100%"
+                *ngIf="
+                  departureSearchCities && departureSearchCities.length > 0
+                "
+              >
+                <h3>Cities:</h3>
+                <ul style="color: #000; list-style-type: none; padding: 0">
+                  <li
+                    *ngFor="let city of departureSearchCities"
+                    (click)="onDepartureSelect(city, 2)"
+                    style="
+                      cursor: pointer;
+                      border: 1px solid lightgray;
+                      border-radius: 5px;
+                      font-size: 13px;
+                      line-height: 21px;
+                      font-weight: 600;
+                      margin: 3px 0;
+                    "
+                  >
+                    <div style="display: flex">
+                      <span
+                        style="
+                          width: 10%;
+                          margin: 0;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                        class="emoji"
+                        >{{ city.emoji }}</span
+                      >
+                      <div
+                        style="
+                          display: flex;
+                          width: 90%;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                      >
+                        <h4 style="margin: 0">
+                          {{ city.city_name }}, {{ city.state_name }}
+                        </h4>
+                        <h4 style="margin: 0">{{ city.country_name }},</h4>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destination -->
+      <div id="accordion">
+        <div
+          class="card"
+          data-toggle="collapse"
+          data-target="#collapse6"
+          aria-expanded="false"
+          aria-controls="collapse6"
+        >
+          <div
+            class="card-header p-2"
+            id="heading6"
+            style="
+              text-align: center;
+              display: flex;
+              height: 50px;
+              align-items: center;
+              width: 258px;
+              justify-content: space-between;
+            "
+          >
+            <a
+              class="btn btn-link p-2 mb-0 dropdown-toggle"
+              style="
+                color: #323268;
+                font-family: 'Lato', sans-serif;
+                font-size: medium;
+              "
+              data-toggle="collapse"
+              data-target="#collapse6"
+              aria-expanded="true"
+              aria-controls="collapse6"
+            >
+              Destination
+            </a>
+            <!-- <ng-container *ngIf="selectedDestinations">
+              <p
+                style="font-size: 14px; font-weight: 600"
+                class="fw-bold py-2 px-2 m-0 text-dark"
+                *ngFor="destination of selectedDestinations"
+              >
+                {{ destination.city_name }}
+              </p>
+            </ng-container> -->
+          </div>
+
+          <div
+            id="collapse6"
+            class="collapse"
+            aria-labelledby="heading6"
+            data-parent="#accordion"
+          >
+            <!-- Collapsible content goes here -->
+            <div class="container-fluid mt-2">
+              <div
+                class="row input shadow-sm"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  text-align: center;
+                  border-radius: 10px;
+                "
+              >
+                <input
+                  type="search"
+                  id="form1"
+                  class="form-control"
+                  placeholder="Search Destinations"
+                  [(ngModel)]="destinationSearchText"
+                  (click)="$event.stopPropagation()"
+                  (input)="onDestinationInputChange()"
+                  aria-label="Search"
+                />
+                <!-- airports -->
+                <div
+                  style="width: 100%"
+                  *ngIf="
+                    destinationSearchAirports &&
+                    destinationSearchAirports.length > 0
+                  "
+                >
+                  <h3 style="margin: 0">Airports:</h3>
+                  <ul style="color: #000; list-style-type: none; padding: 0">
+                    <li
+                      *ngFor="let airport of destinationSearchAirports"
+                      (click)="onDestinationSelect(airport, 1)"
+                    >
+                      <ng-container *ngIf="airport.iata !== null">
+                        <div
+                          style="
+                            cursor: pointer;
+                            display: flex;
+                            width: 100%;
+                            border: 1px solid lightgray;
+                            border-radius: 5px;
+                            font-size: 13px;
+                            line-height: 21px;
+                            font-weight: 600;
+                            margin: 3px 0;
+                          "
+                        >
+                          <span
+                            style="
+                              width: 10%;
+                              margin: 0;
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                            "
+                            class="emoji"
+                            >{{ airport.emoji }}</span
+                          >
+                          <div
+                            style="
+                              display: flex;
+                              width: 90%;
+                              flex-direction: column;
+                              align-items: center;
+                              justify-content: center;
+                            "
+                          >
+                            <h4 style="margin: 0">
+                              {{ airport.iata }} - {{ airport.name }}
+                            </h4>
+                            <h4 style="margin: 0">
+                              {{ airport.city || airport.city_alias }},{{
+                                airport.country_name
+                              }}
+                            </h4>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </li>
+                  </ul>
+                </div>
+                <!-- cities -->
+                <div
+                  style="width: 100%"
+                  *ngIf="
+                    destinationSearchCities &&
+                    destinationSearchCities.length > 0
+                  "
+                >
+                  <h3>Cities:</h3>
+                  <ul style="color: #000; list-style-type: none; padding: 0">
+                    <li
+                      *ngFor="let city of destinationSearchCities"
+                      (click)="onDestinationSelect(city, 2)"
+                      style="
+                        cursor: pointer;
+                        border: 1px solid lightgray;
+                        border-radius: 5px;
+                        font-size: 13px;
+                        line-height: 21px;
+                        font-weight: 600;
+                        margin: 3px 0;
+                      "
+                    >
+                      <div style="display: flex">
+                        <span
+                          style="
+                            width: 10%;
+                            margin: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                          class="emoji"
+                          >{{ city.emoji }}</span
+                        >
+                        <div
+                          style="
+                            display: flex;
+                            width: 90%;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          <h4 style="margin: 0">
+                            {{ city.city_name }}, {{ city.state_name }}
+                          </h4>
+                          <h4 style="margin: 0">{{ city.country_name }},</h4>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--NEED CHANGES added cities by shivam-->
+    <div class="d-flex w-100 gap-5 mt-4">
+      <div class="container text-center">
+        <div class="row row-cols-4 gap-1">
+          <div
+            *ngFor="let city of cities; let i = index"
+            class="col me-0"
+            style="width: 24%"
+          >
+            <div
+              class="border d-flex flex-column justify-content-center align-items-center gap-1"
+              style="
+                height: 85px;
+                background-color: #2f3268;
+                border-radius: 10px 10px 10px 10px;
+              "
+            >
+              <span class="text-center text-white mb-1" style="font-size: 12px"
+                >City {{ i + 1 }}</span
+              >
+              <span
+                class="text-center text-white fw-bold"
+                style="font-size: 18px"
+                >{{ city }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--ACTIVE added cities by hemant -->
+    <div *ngIf="selectedDestinations">
+      <div
+        style="
+          height: 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+        "
+      >
+        <div
+          *ngFor="let destination of selectedDestinations"
+          style="
+            height: 50px;
+            width: 140px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+          "
+        >
+          <button
+            style="
+              height: 100%;
+              width: 100%;
+              padding: 3px;
+              border: none;
+              background-color: rgb(139, 214, 214);
+              font-size: 19px;
+              font-weight: 600;
+              border-radius: 9px;
+            "
+          >
+            {{ destination?.city_name }}
+          </button>
+          <button
+            (click)="removeCity(destination.city_name)"
+            style="
+              font-size: 18px;
+              font-weight: 700;
+              text-decoration: none;
+              background-color: #ffffff00;
+              border: 1px solid black;
+              border-radius: 50%;
+              position: absolute;
+              top: 0px;
+              height: 18px;
+              width: 18px;
+              right: 0px;
+              padding: 0px;
+              margin: 0px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding-bottom: 3px;
+            "
+          >
+            x
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-----------------Advance Options------------------------>
+
+    <!-- CTA Advance options -->
+    <div class="my-4 w-100 d-flex justify-content-center" style="z-index: 1">
+      <div>
+        <button
+          type="button "
+          class="btn2 btn rht pt-0"
+          (click)="advance()"
+          style="border: 1px solid #ff4040; color: #ff4040; height: 30px"
+        >
+          Advance Options
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="adv"
+      [style.display]="showAdvanceOptions ? 'block' : 'none'"
+      style="display: none"
+    >
+      <div class="d-flex w-100 gap-5 mt-4">
+        <!-- nature of traveller -->
+        <div
+          class="shadow px-2 py-2 my-1 d-flex flex-column w-bold border rounded border-black"
+          style="width: 50%; background-color: #2f3268"
+        >
+          <div class="d-flex flex-row justify-content-between">
+            <div style="width: 48%">
+              <span class="fw-bold" style="color: white; font-size: 15px"
+                >Nature Of Traveller</span
+              >
+            </div>
+            <div>
+              <input
+                class="border border-black mt-0 form-control form-control-sm"
+                type="text"
+                placeholder="Nature of Traveller"
+                aria-label=".form-control-sm example"
+                style="
+                  font-size: 13px;
+                  height: 30px;
+                  width: 100%;
+                  border-radius: 10px 10px 10px 10px;
+                "
+                (click)="ntr()"
+                [value]="selectedNatureOfTraveller"
+              />
+              <div
+                id="hiddenDiv"
+                class="hidden"
+                style="
+                  width: 220px;
+                  height: 150px;
+                  position: absolute;
+                  background-color: rgb(255, 255, 255);
+                  border: 1px solid black;
+                  border-radius: 10px 10px 10px 10px;
+                "
+              ></div>
+            </div>
+          </div>
+
+          <div
+            class="border rounded font-size: 13px mt-0 bg-white"
+            [style.display]="ntrav ? 'block' : 'none'"
+            style="height: 120px; width: 98%; margin-left: 2px"
+          >
+            <div
+              *ngFor="let type of natureofTraveller"
+              (click)="selectNatureOfTraveller(type)"
+              class="n-trav fw-bold border-bottom px-3 py-1"
+              (click)="ntr()"
+              style="height: 25%; font-size: 13px"
+            >
+              {{ type }}
+            </div>
+          </div>
+        </div>
+
+        <!-- budget -->
+        <div
+          class="shadow px-2 py-2 my-1 d-flex flex-column w-bold border rounded border-black"
+          style="width: 50%; background-color: #2f3268; height: 47px"
+        >
+          <div class="d-flex flex-row justify-content-between">
+            <div>
+              <span
+                class="fw-bold"
+                style="color: white; font-size: 15px; margin-left: 10px"
+                >Budget</span
+              >
+            </div>
+            <input
+              class="border border-black mt-0 form-control form-control-sm"
+              type="text"
+              placeholder="Budget"
+              aria-label=".form-control-sm example"
+              style="
+                font-size: 13px;
+                height: 30px;
+                width: 60%;
+                border-radius: 10px 10px 10px 10px;
+              "
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- nature of trip -->
+    <div
+      class="adv"
+      [style.display]="showAdvanceOptions ? 'block' : 'none'"
+      style="display: none"
+    >
+      <div class="d-flex w-100 gap-5">
+        <!-- nature of trip -->
+        <div
+          class="shadow px-2 py-2 my-4 d-flex flex-column w-bold border rounded border-black"
+          style="width: 46%; background-color: #2f3268"
+        >
+          <div (click)="ntrp()">
+            <div class="d-flex flex-row">
+              <span class="fw-bold mt-1" style="color: white; font-size: 15px"
+                >Nature Of Trip</span
+              >
+              <span class="material-symbols-outlined text-white mt-1">
+                chevron_right
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="border rounded font-size: 13px mt-1 bg-white"
+            [style.display]="ntrip ? 'block' : 'none'"
+            style="height: 120px; width: 98%; margin-left: 2px; overflow: auto"
+          >
+            <div
+              *ngFor="let nature of natureofTrip; let i = index"
+              class="n-trav fw-bold border-bottom px-3 py-1"
+              [attr.for]="'flexCheckIndeterminate' + i"
+              style="height: 30px; font-size: 13px"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [id]="'flexCheckIndeterminate' + i"
+                class="ms-0 mt-1 me-2"
+                [checked]="nature.check"
+                (change)="selectNatureofTrip(nature, i)"
+              />
+              <label
+                class="form-check-label"
+                [attr.for]="'flexCheckIndeterminate' + i"
+              >
+                {{ nature.name }}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--left-end-->
+
+  <!-- right side -->
+  <div
+    class="px-5"
+    style="width: 40%; position: relative; right: 0; top: -76px"
+  >
+    <div class=" ">
+      <div class="my-2">
+
+        <span class="fw-bold" style="font-size: 20px">Interest level : </span>
+        <!-- interest Level -->
+        <div class="d-flex">
+          <div
+            class="my-2 d-flex"
+            style="
+              width: 67%;
+              height: 30px;
+              border: 2px solid #ff4040;
+              border-radius: 10px 10px 10px;
+            "
+          >
+            <span
+              (click)="selectInterestLevel(1)"
+              [style.background-color]="
+               interestLevel === 'low' ? '#ff4040' : 'white'
+              "
+              [style.color]="interestLevel === 'low' ? 'white' : '#ff4040'"
+              class="px-3 rht h-100"
+              style="
+                border-right: 1px solid #ff4040;
+                color: #ff4040;
+                border-radius: 10px 0px 0px 10px;
+                cursor: pointer;
+              "
+            >
+              Low
+            </span>
+            <span
+              class="px-3 rht"
+              (click)="selectInterestLevel(2)"
+              [style.background-color]="
+               interestLevel === 'moderate' ? '#ff4040' : 'white'
+              "
+              [style.color]="interestLevel === 'moderate' ? 'white' : '#ff4040'"
+              style="
+                border-right: 1px solid #ff4040;
+                color: #ff4040;
+                cursor: pointer;
+              "
+            >
+              Moderate
+            </span>
+            <span
+              class="px-3 rht w-100"
+              (click)="selectInterestLevel(3)"
+              [style.background-color]="
+               interestLevel === 'high' ? '#ff4040' : 'white'
+              "
+              [style.color]="interestLevel === 'high' ? 'white' : '#ff4040'"
+              style="
+                color: #ff4040;
+                border-radius: 0px 10px 10px 0px;
+                cursor: pointer;
+              "
+            >
+              High
+            </span>
+          </div>
+        </div>
+
+        <span class="fw-bold" style="font-size: 20px">Enquiry Details :</span>
+        <!-- enquiry details -->
+        <div class="d-flex">
+          <div
+            class="my-2 d-flex"
+            style="
+              width: 63%;
+              height: 30px;
+              border: 2px solid #ff4040;
+              border-radius: 10px 10px 10px;
+            "
+          >
+            <span
+              class="px-2 rht"
+              (click)="selectEnquiryDetail('FollowUp')"
+              [style.background-color]="
+                selectedEnquiryDetails === 'FollowUp' ? '#ff4040' : 'white'
+              "
+              [style.color]="selectedEnquiryDetails === 'FollowUp' ? 'white' : '#ff4040'"
+              style="
+                border-right: 1px solid #ff4040;
+                color: #ff4040;
+                border-radius: 10px 0px 0px 10px;
+                cursor: pointer;
+              "
+            >
+              FollowUp
+            </span>
+            <span
+              class="px-2 w-100 rht"
+              (click)="selectEnquiryDetail('Do not FollowUp')"
+              [style.background-color]="
+                selectedEnquiryDetails === 'Do not FollowUp' ? '#ff4040' : 'white'
+              "
+              [style.color]="selectedEnquiryDetails === 'Do not FollowUp' ? 'white' : '#ff4040'"
+              style="
+                color: #ff4040;
+                border-radius: 0px 10px 10px 0px;
+                cursor: pointer;
+              "
+            >
+              Don't FollowUp
+            </span>
+          </div>
+        </div>
+
+        <span class="fw-bold" style="font-size: 20px">FollowUp Date :</span>
+        <!-- follow up date (value directly to itineraryObject)-->
+        <input
+          class="border border-black mt-2 form-control form-control-sm"
+          type="date"
+         
+          [(ngModel)]="itinerary.followUpDate"
+          aria-label=".form-control-sm example"
+          style="font-size: 13px; width: 100%"
+        />
+
+        <!-- remarks (value directly to itineraryObject)-->
+        <textarea
+          class="form-control mb-3 mt-3"
+          id="exampleFormControlTextarea1"
+          rows="5"
+          [(ngModel)]="itinerary.remarks"
+          placeholder="Type Enquiry Remarks"
+          style="width: 100%"
+        ></textarea>
+
+
+        <!-- buttons -->
+        <div class="w-100" style="text-align: right">
+          <button
+            type="button"
+            class="btn pb-1 btn-sm text-white mx-2"
+            style="background-color: #2f3268; font-size: 13px; width: 35%"
+          >
+            Not interested</button
+          ><button
+            type="button"
+            class="btn pb-1 btn-sm text-white mx-2"
+            (click)="submitEnquiry()"
+            style="background-color: #ff4040; font-size: 13px; width: 36%"
+          >
+            {{ update ? "Update Enquiry" : "Log an Enquiry" }}
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

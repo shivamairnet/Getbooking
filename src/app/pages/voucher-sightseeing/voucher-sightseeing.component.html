@@ -1,0 +1,140 @@
+
+<div class=" mt-36 p-3 border rounded-lg mb-4 ml-3 mr-3 border border-gray-600 bg-gray-50">
+  <h2 class="text-md font-bold mb-2 text-center bg-gray-200 text-customPurple relative flex justify-center items-center">
+    Sightseeing Voucher
+    <div class="absolute inset-y-0 right-0 flex items-center mr-3 space-x-2">
+      <button class="text-xs text-customPurple underline hover:no-underline focus:outline-none mx-2">Email</button>
+      <div class="border-l h-4 border-customPurple"></div>
+      <button class="text-xs text-customPurple underline hover:no-underline focus:outline-none mx-2">Print</button>
+      <div class="border-l h-4 border-customPurple"></div>
+      <button class="text-xs text-customPurple underline hover:no-underline focus:outline-none mx-2">Generate PDF</button>
+    </div>
+  </h2>
+  
+      <div class="grid grid-cols-2 gap-4 mb-3 justify-center items-center">
+        <div class="bg-gray-100 p-3 rounded-md ">
+          <div class="flex mb-2">
+            <div class="w-2/4 font-semibold">Reference Number:</div>
+            <div class="w-2/4">1EE5556</div>
+          </div>
+          <div class="flex">
+            <div class="w-2/4 font-semibold">Confirmation Number:</div>
+            <div class="w-2/4">A7895c6</div>
+          </div>
+           <p class="text-md font-bold mt-4 text-customPurple">Issued Date:29-Jan-2024,Wed</p>          
+        </div>
+      
+        <div class="bg-gray-100 p-3 rounded-md">
+          <p class="text-sm font-semibold text-customPurple underline">Agency Address:</p>
+          
+          <div class="flex">
+            <div class="w-2/4 font-semibold text-sm">Address:</div>
+            <div class="w-2/4 text-sm">{{ agencyAddress.address }}</div>
+          </div>
+          <div class="flex">
+            <div class="w-2/4 font-semibold text-sm">City:</div>
+            <div class="w-2/4 text-sm">{{ agencyAddress.city }}</div>
+          </div>
+          <div class="flex">
+            <div class="w-2/4 font-semibold text-sm">Phone:</div>
+            <div class="w-2/4 text-sm">{{ agencyAddress.phone }}</div>
+          </div>
+          <div class="flex">
+            <div class="w-2/4 font-semibold text-sm">Email:</div>
+            <div class="w-2/4 text-sm">{{ agencyAddress.email }}</div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <h4 class="text-md font-semibold p-1 pl-2 rounded-lg bg-gray-100 underline">Traveller Details</h4>
+      <table class="min-w-full bg-white mb-10 border b-2">
+        <thead>
+          <tr>
+            <th class="text-xs px-2">Lead Traveller</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-xs px-2">Mr. Rishabh Chawla</td>
+          </tr>
+        </tbody>
+      </table>
+      
+<h4 class="text-md font-semibold p-1 pl-2 bg-gray-100 rounded-lg underline">Sightseeing Details</h4>
+
+<table class="mt-2 w-full border border-gray-200 rounded-lg overflow-hidden">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="border-t border-l border-r border-gray-200 p-2 text-xs first:rounded-tl-lg last:rounded-tr-lg">Name:</th>
+        <th class="border-t border-l border-r border-gray-200 p-2 text-xs first:rounded-tl-lg last:rounded-tr-lg">City:</th>
+        <th class="border-t border-l border-r border-gray-200 p-2 text-xs first:rounded-tl-lg last:rounded-tr-lg">Date:</th>
+        <th class="border-t border-l border-r border-gray-200 p-2 text-xs first:rounded-tl-lg last:rounded-tr-lg">Time:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      </tr>
+    </tbody>
+  </table>
+<hr>
+<div class="grid grid-cols-2 bg-gray-100 p-2 rounded-lg">
+  <div class="p-0">
+    <h4 class="text-sm font-semibold underline">Need To Make Changes Or Cancel?</h4>
+    <ul class="list-disc pl-4">
+      <li class="text-sm" *ngFor="let exclusion of exclusions">{{ toMakeChanges.text }}</li>
+    </ul>
+  </div>
+  <div class="p-0">
+    <h4 class="text-sm font-semibold underline">Tour Specific Enquires</h4>
+    <ul class="list-disc pl-4">
+      <li class="text-sm" *ngFor="let exclusion of exclusions">{{ Enquires.text }}</li>
+    </ul>
+  </div>
+</div>
+  
+<hr>
+
+<div class="grid grid-cols-2 bg-gray-100 p-2 rounded-lg">
+  <div class="p-0">
+    <h4 class="text-sm font-semibold underline">Inclusions and Exclusions</h4>
+    <ul class="list-disc pl-3">
+      <li class="text-sm font-semibold">What's included:
+        <ul class="list-disc pl-4">
+          <li class="text-sm" *ngFor="let inclusion of inclusions">{{ inclusion.text }}</li>
+        </ul>
+      </li>
+      <li class="text-sm font-semibold">What's not included:
+        <ul class="list-disc pl-4">
+          <li class="text-sm" *ngFor="let exclusion of exclusions">{{ exclusion.text }}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="p-0">
+    <h4 class="text-sm font-semibold underline">Meeting And Pickup</h4>
+    <div class="mt-2 pl-3">
+      <div class="flex text-customPurple text-sm">
+        <span class="font-semibold">Meeting Point:</span>
+        <span class="ml-2">{{ meetingAndPickup.meetingPoint }}</span>
+      </div>
+      <div class="flex text-customPurple text-sm">
+        <span class="font-semibold">Start Time:</span>
+        <span class="ml-2">{{ meetingAndPickup.startTime }}</span>
+      </div>
+      <div class="flex text-customPurple text-sm">
+        <span class="font-semibold">End Point:</span>
+        <span class="ml-2">{{ meetingAndPickup.endPoint }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="p-0">
+  <h4 class="text-sm font-semibold underline">Before You Go:</h4>
+  <p class="text-sm">{{ beforeYouGo }}</p>
+</div>
+
+</div>

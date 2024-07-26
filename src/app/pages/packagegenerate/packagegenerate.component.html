@@ -1,0 +1,948 @@
+<!-- First div for cities -->
+<div class="flex flex-col w-full md:w-12/12 lg:w-12/12 mb-2 ml-2 mr-4 mt-20">
+  <div class="bg-gray-200 text-white shadow-md rounded-lg mb-4 ml-2 mr-4">
+   <div class="px-4 py-2 border-b border-white font-bold text-customPurple text-center text-lg">
+       Cities
+   </div>
+   <div class="p-2">
+    <h4 class="text-center">cities</h4>
+   </div>
+</div> 
+</div>
+
+
+<div class="container mx-auto p-2">
+<div class="flex flex-wrap justify-between ml-2">
+  <div class="flex flex-col w-full md:w-8/12 lg:w-8/12 mb-2 ml-2">
+     <!-- Package Details  -->
+    <div class="bg-white text-white rounded-lg mb-2 border-customPurple border-2 ">
+      <div class="px-2 py-2 border-b border-customPurple text-center text-customOrange font-bold text-lg flex items-center">
+        <div class="flex-grow text-center">        
+        Package Name - Overview
+      </div>
+      <div class="flex space-x-4 items-center">
+        <button class="text-sm text-customOrange underline">View</button>
+        <a href="mailto:your-email@example.com" class="text-customPurple text-lg">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/your-number" target="_blank" class="text-customPurple text-lg">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="path/to/your/downloadable/file" download class="text-customPurple text-lg">
+          <i class="fas fa-download"></i>
+        </a>
+
+      </div>
+      </div>
+      <div class="p-4 text-customPurple">
+      
+        <div class="flex justify-between h-36">
+          <div class="w-1/3 mx-3 mt-1 mb-2 ">
+            <h2 class="text-sm text-customPurple underline">Package Details</h2>
+            <div *ngFor="let detail of packageDetails" class="flex justify-between mb-2 text-xs">
+              <span class="text-xs" 
+                    [title]="detail.tooltip ? detail.tooltip : ''" 
+                    [ngClass]="{'hover:text-orange-600': detail.tooltip}">
+                {{ detail.label }}
+              </span>
+              <span class="text-xs"
+                    [title]="detail.tooltip ? detail.tooltip : ''" 
+                    [ngClass]="{'hover:text-orange-600': detail.tooltip}">
+                {{ detail.value }}
+              </span>
+            </div>
+          </div>
+          <div class="w-1/3 mx-3 mr-1 mt-1 mb-2">
+            <h2 class="text-sm underline text-customPurple mr-2.5">Inclusive Services</h2>
+            <div *ngFor="let service of serviceDetails" class="flex justify-between mb-2 text-xs">
+              <span class="text-xs">{{ service.label }}</span>
+              <span class="text-xs">{{ service.value }}</span>
+            </div>
+          </div>
+          <div class="w-1/3 mx-3 mt-1 mb-2">
+            <h2 class="text-sm text-customPurple underline mr-2.5">Representative</h2>
+            <div *ngFor="let representative of representativeDetails" class="flex justify-between mb-2 text-xs">
+              <span class="text-xs">{{ representative.label }}</span>
+              <span class="text-xs">{{ representative.value }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-- cta div -->
+        <!-- <div class="flex justify-end mt-2 mb-1 space-x-2">
+          <button class="bg-customOrange border-customPurple border-2 text-xs text-white py-1 px-1 rounded-lg">Download Package</button>
+          <button class="bg-customOrange border-customPurple border-2 text-xs text-white py-1 px-1 rounded-lg">Invoice</button>
+          <button class="bg-customOrange border-customPurple border-2 text-xs text-white py-1 px-1 rounded-lg mr-2"  (click)="openCancellationModal()">Cancellation</button>
+        </div> -->
+      
+    </div>
+  </div>
+  
+  <!-- payment details -->
+  <div class="bg-customPurple text-white shadow-md rounded-lg w-full md:w-3/12 lg:w-3/12 mb-4 mr-2 h-64">
+    <div class="px-4 py-2 border-b border-white text-center">
+      Payment Details
+      <div class="flex justify-between mb-1 mt-1">
+        <span class="text-sm text-customOrange">Total Trip Cost</span>
+        <span class="text-sm text-customOrange">&#8377; 500</span>
+      </div>
+    </div>
+    <div class="p-2">
+      <div *ngFor="let costDetail of costDetails" class="mt-0.5 flex justify-between mb-0.5">
+        <span class="text-xs">{{ costDetail.label }}</span>
+        <span class="text-xs">&#8377; {{ costDetail.value }}</span>
+      </div>
+    </div>
+    <div class="flex justify-end mt-2 space-x-2">
+    <button class="bg-customOrange border-customPurple border-2 text-xs text-white py-1 px-1 rounded-lg">Invoice</button>
+    <button class="bg-customOrange border-customPurple border-2 text-xs text-white py-1 px-1 rounded-lg mr-2"  (click)="navigateToConfirmCancellation()">Cancellation</button>
+    </div>
+
+  
+    <!-- <div class="flex justify-between max-w-md bg-white shadow-md rounded-lg overflow-hidden">
+      <div class="px-1 py-4 border-b w-1/2">
+          <h4 class="text-sm font-bold text-gray-800 underline">Share Package</h4>
+          <div class="flex justify-between mt-2 w-full">
+           
+          </div>
+      </div>
+      <div class="px-1 py-4 w-1/2">
+          <h4 class="text-sm font-bold text-gray-800 underline">Documents</h4>
+          <div class="flex justify-between mt-2 w-full">
+            <button class="bg-customOrange border-customPurple border-2 text-white px-1 py-2 rounded-md mr-1 h-6 w-14 text-sm flex items-center justify-center">Package</button>
+            <button class="bg-customOrange border-customPurple border-2 text-white px-1 py-2 rounded-md h-6 w-14 text-sm flex items-center justify-center">Invoice</button>
+          </div>
+      </div>
+  </div> -->
+  
+  </div>
+</div>
+</div>
+
+<!-- Passenger Details -->
+<div class="bg-white text-customPurple rounded-lg mb-4 mt-0 ml-3 mr-4 border-customPurple">
+  <div class="px-4 py-1 border-b border-customPurple text-center font-bold bg-gray-100 text-lg">
+    Traveller Details
+  </div>
+  <div class="p-2 mt-0">
+    <!-- <div class="mb-2">
+      <button (click)="addPassenger()" class="bg-customPurple text-white p-2">Add Traveller</button>
+    </div> -->
+ 
+      <ul class="flex border-b">
+        <li *ngFor="let passenger of passengers; let i = index" (click)="selectedTab = i"
+          [class.border-customPurple]="selectedTab === i"
+          [class.border-b-2]="selectedTab === i" class="cursor-pointer p-2">
+          Traveller {{ i + 1 }}
+        </li>
+      </ul>
+      <div *ngIf="passengers[selectedTab]" class="tab-content">
+        <div class="p-0">
+          <div class="container mx-auto p-0">
+            <div class="p-0 rounded-lg">
+              <div class="grid grid-cols-1 gap-4">
+                <!-- Passenger Details -->
+                <div *ngIf="passengers[selectedTab].passengerDetails && passengers[selectedTab].passengerDetails.data" class="p-2 rounded-lg">
+                  <h4 class="text-md font-semibold bg-gray-100 p-2 pl-2 underline rounded-lg">
+                    {{ passengers[selectedTab].passengerDetails.title }}
+                    <!-- Uncomment if you need to show 'Lead' badge -->
+                    <!-- <span *ngIf="passengers[selectedTab].passengerDetails.data.isLeadPassenger" class="bg-orange-600 text-white text-xs font-semibold ml-2 px-2 py-1 rounded-full">Lead</span> -->
+                  </h4>
+      
+                  <table class="mb-1 w-full border border-r-2 border-gray-200 rounded-lg overflow-hidden">
+                    <tbody>
+                      <tr>
+                        <!-- Column 1 -->
+                        <td class="p-1 text-xs">
+                          <div class="flex">
+                            <div class="w-1/2 pr-2 font-semibold">Name:</div>
+                            
+                            <div class="w-1/2 pl-2 flex space-x-2">
+                              <span>{{ passengers[selectedTab].passengerDetails.data.Title }}</span>
+                              <span>{{ passengers[selectedTab].passengerDetails.data.Firstname }}</span>
+                              <span>{{ passengers[selectedTab].passengerDetails.data.Secondname }}</span></div>
+                          </div>
+                          
+                          <div class="flex mt-1">
+                            <div class="w-1/2 pr-2 font-semibold">Date Of Birth:</div>
+                            <div class="w-1/2 pl-2">{{ passengers[selectedTab].passengerDetails.data.Birthdate }}</div>
+                          </div>
+      
+                          <div class="flex mt-1">
+                            <div class="w-1/2 pr-2 font-semibold">Age:</div>
+                            <div class="w-1/2 pl-2">{{ passengers[selectedTab].passengerDetails.data.age }}</div>
+                          </div>
+      
+                          <div class="flex mt-1">
+                            <div class="w-1/2 pr-2 font-semibold">Gender:</div>
+                            <div class="w-1/2 pl-2">{{ passengers[selectedTab].passengerDetails.data.gender }}</div>
+                          </div>
+      
+                          <div class="flex mt-1">
+                            <div class="w-1/2 pr-2 font-semibold">Nationality:</div>
+                            <div class="w-1/2 pl-2">{{ passengers[selectedTab].passengerDetails.data.nationality }}</div>
+                          </div>           
+                        </td>
+                        
+                        <!-- Column 2 -->
+                        <td class="p-1 text-xs">
+                          <div class="flex mt-1">
+                            <div class="w-1/2 pr-2 font-semibold">PAN:</div>
+                            <div class="w-1/2 pl-2">{{ passengers[selectedTab].passengerDetails.data.PAN }}</div>
+                          </div>
+      
+                          <div class="flex mt-1">
+                            <div class="w-1/2 pr-2 font-semibold">Passport Number:</div>
+                            <div class="w-1/2 pl-2">{{ passengers[selectedTab].passengerDetails.data.PassportNumber }}</div>
+                          </div>
+                          
+                          <div class="flex mt-1">
+                            <div class="w-1/2 pr-2 font-semibold">Contact:</div>
+                            <div class="w-1/2 pl-2">{{ passengers[selectedTab].passengerDetails.data.contact }}</div>
+                          </div>
+      
+                          <div class="flex mt-1">
+                            <div class="w-1/2 pr-2 font-semibold">Email:</div>
+                            <div class="w-1/2 pl-2">{{ passengers[selectedTab].passengerDetails.data.email }}</div>
+                          </div>
+      
+                          <div class="flex mt-1">
+                            <div class="w-1/2 pr-2 font-semibold">Address:</div>
+                            <div class="w-1/2 pl-2">{{ passengers[selectedTab].passengerDetails.data.address }}</div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  </div>
+</div>
+
+<!-- third Div for services -->
+<div class="flex flex-col w-full mb-4 ml-2 mr-4 border-customPurple">
+  
+  <div class="bg-white text-sm text-customPurple shadow-md rounded-lg mb-4 ml-2 mr-4 border border-customPurple">
+    <div class="px-4 py-1 border-b border-customPurple text-center bg-gray-200 text-lg font-bold">
+      Services Details
+    </div>
+    <div class="max-w-full mx-auto bg-white shadow-lg rounded-lg text-customPurple p-2">
+      <div class="flex border-b rounded-lg ">
+        <button 
+          class="w-1/5 text-center font-semibold py-1 text-md border-r border-customPurple cursor-pointer px-4 rounded-lg" 
+          [class.font-bold]="activeTab === 'flights'" 
+          [class.bg-customPurple]="activeTab === 'flights'"
+          [class.text-white]="activeTab === 'flights'"
+          (click)="setActiveTab('flights')">Flights</button>
+        <button 
+          class="w-1/5 text-center font-semibold py-1 text-md border-r border-customPurple cursor-pointer px-4 rounded-lg" 
+          [class.font-bold]="activeTab === 'hotels'" 
+          [class.bg-customPurple]="activeTab === 'hotels'"
+          [class.text-white]="activeTab === 'hotels'"
+          (click)="setActiveTab('hotels')">Hotels</button>
+        <button 
+          class="w-1/5 text-center py-1 font-semibold text-md border-customPurple cursor-pointer px-4 rounded-lg" 
+          [class.font-bold]="activeTab === 'sightseeing'" 
+          [class.bg-customPurple]="activeTab === 'sightseeing'"
+          [class.text-white]="activeTab === 'sightseeing'"
+          (click)="setActiveTab('sightseeing')">Sightseeing</button>
+      </div>
+      
+      <div class="p-2" *ngIf="activeTab === 'flights'">
+        <!-- <h2 class="text-xl font-bold mb-4 text-center">Flights</h2> -->
+                       <!-- Flight Details and second div for ticket details-->
+<!-- <div *ngIf="passengers[selectedTab].flightDetails && passengers[selectedTab].flightDetails.length > 0" class="p-4 border rounded-lg mb-4 mt-3">
+  <div *ngFor="let flight of passengers[selectedTab].flightDetails">
+    <h4 class="text-md font-semibold bg-gray-100 p-2 pl-2 rounded-lg underline">{{ flight.title }}</h4>
+    <table class="min-w-full bg-white mb-4">
+      <tbody>
+        <ng-container *ngFor="let chunk of chunkArray(getKeyValuePairs(flight.data), 3)">
+          <tr>
+            <ng-container *ngFor="let item of chunk">
+              <td class="text-xs px-2">{{ item.key | titlecase }}:</td>
+              <td class="text-xs px-2">{{ item.value }}</td>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+     <div *ngIf="passengers[selectedTab].ticketDetails && passengers[selectedTab].ticketDetails.data" class="p-4 mb-4 rounded-lg">
+      <h4 class="text-md font-semibold bg-gray-100 p-2 pl-2 underline rounded-lg">{{ passengers[selectedTab].ticketDetails.title }}</h4>
+      <table class="min-w-full bg-white mb-4">
+        <tbody>
+          <ng-container *ngFor="let chunk of chunkArray(getKeyValuePairs(passengers[selectedTab].ticketDetails.data), 3)">
+            <tr>
+              <ng-container *ngFor="let item of chunk">
+                <td class="text-xs px-2">{{ item.key | titlecase }}:</td>
+                <td class="text-xs px-2">{{ item.value }}</td>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div> -->
+
+  <div class="w-full">
+    <ul class="flex border-b">
+      <li
+        *ngFor="let passenger of passengers; let i = index"
+        class="mr-1 cursor-pointer"
+        
+        [class.border-customPurple]="selectedTab === i"
+        [class.border-b-2]="selectedTab === i"
+        (click)="selectTab(i)"
+      >
+        <a class="bg-white inline-block py-2 px-4 text-customPurple hover:text-customOrange" 
+           [class.font-bold]="selectedTab === i">
+           Traveller {{ i + 1 }}
+        </a>
+      </li>
+    </ul>
+    <div *ngFor="let passenger of passengers; let i = index" [hidden]="selectedTab !== i">
+      <div class="passenger relative">
+        <h3 class="text-md text-customPurple p-1 pl-2 font-bold rounded-lg text-center mb-1">
+          Traveller Name: 
+          {{ passengers[selectedTab].passengerDetails.data.Title }} 
+          {{ passengers[selectedTab].passengerDetails.data.Firstname }} 
+          {{ passengers[selectedTab].passengerDetails.data.Secondname }}
+        </h3>
+      </div>
+      
+      <div class="p-1 rounded mt-0">
+        <ng-container *ngFor="let flight of passenger.flightDetails; let i=index">
+          <div class="rounded-lg mt-1">
+            <h3 (click)="toggleAccordion(i)" class="text-md text-customPurple bg-gray-200 p-1 pl-2 font-bold rounded-lg text-left cursor-pointer">
+              {{ i + 1 }}. {{ flight.data.flightRoute }}
+            </h3>
+            
+            <div *ngIf="activeIndex === i" class="p-4">
+              <div class="flex justify-between p-1 pl-2 bg-gray-100 rounded-lg items-center">
+                <h4 class="text-md font-semibold underline">Flight Details</h4>
+                <a href="#" (click)="openfareModal($event)" class="text-md text-customOrange underline pr-1">Fare Rules</a>
+              </div>
+                      
+              <div class="grid grid-cols-4 gap-0 border-1 border-customPurple rounded-lg p-1">
+                <!-- First Column -->
+                <div class="col-span-1 border-r-2 mt-4">
+                  <div class="flex items-center text-xs font-semibold text-customPurple mb-0.5 pl-2">
+                    <span class="w-32">Flight Number:</span>
+                    <span>{{ flight.data.flightNumber }}</span>
+                  </div>
+                  <div class="flex items-center text-xs font-semibold text-customPurple mb-0.5 pl-2">
+                    <span class="w-32">Airline:</span>
+                    <span>{{ flight.data.Airline }}</span>
+                  </div>
+                  <div class="flex items-center text-xs font-semibold text-customPurple mb-0.5 pl-2">
+                    <span class="w-32">Class:</span>
+                    <span>{{ flight.data.class }}</span>
+                  </div>
+                  <div class="flex items-center text-xs font-semibold text-customPurple mb-0.5 pl-2">
+                    <span class="w-32">Duration:</span>
+                    <span>{{ flight.data.duration }}</span>
+                  </div>
+                </div>
+                
+                <!-- Second Column -->
+                <div class="col-span-2">
+                  <div class="flight-path mt-0 text-customPurple">
+                    <svg width="420" height="100">
+                      <!-- Line -->
+                      <line x1="50" y1="50" x2="350" y2="50" stroke="#666" stroke-width="2" />
+                      <!-- Dots -->
+                      <circle cx="50" cy="50" r="5" class="stop" />
+                      <circle cx="350" cy="50" r="5" class="stop" />
+                      <!-- Airports -->
+                      <text x="30" y="40" font-size="12" class="airport">{{ flight.data.departure }}</text>
+                      <text x="330" y="40" font-size="12" class="airport">{{ flight.data.arrival }}</text>
+                      <!-- Dates -->
+                      <text x="30" y="65" font-size="10" class="time">{{ flight.data.departuretime }}</text>
+                      <text x="330" y="65" font-size="10" class="time">{{ flight.data.arrivaltime }}</text>
+                      <!-- Duration -->
+                      <text x="155" y="30" font-size="10" class="duration">{{ flight.data.duration }}</text>
+                      
+                      </svg>
+                      <a href="#" class="text-customPurple text-sm mr-3 font-semibold" style="position: absolute; top: 40px; left: 145px;">
+                        <i class="fas fa-plane"></i>
+                      </a>
+                      </div>
+                      </div>
+
+                 <!-- Third Column -->
+          <div class="col-span-1">
+            <div class="mb-1 p-1 border-2 border-customPurple rounded-2xl ml-5 items-end mt-3">
+              <div class="flex items-center justify-start p-1 mb-1">
+                <p class="text-s font-semibold text-customPurple mb-0.5 w-20">PNR:</p>
+                <div class="bg-gray-200 h-6 w-32 ml-2 text-center text-xs flex items-center justify-center">{{ flight.data.pnr }}</div>
+              </div>
+              <div class="flex items-center justify-start p-1">
+                <p class="text-s font-semibold text-customPurple mb-0.5 w-20">Status:</p>
+                <div class="bg-gray-200 h-6 w-32 ml-2 text-center text-xs flex items-center justify-center"
+                   [ngClass]="{
+                     'text-green-700 font-semibold': flight.data.flightStatus === 'Confirmed',
+                     'text-red-700': flight.data.flightStatus === 'Cancelled',
+                     'text-yellow-700': flight.data.flightStatus === 'Hold'
+                   }">{{ flight.data.flightStatus }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <hr>
+        
+        <div class="tickets relative">
+          <h4 class="text-md font-semibold p-1 pl-2 bg-gray-100 rounded-lg underline">Ticket Details</h4>
+          <div class="flex items-center text-xs font-semibold text-customPurple mb-0.5 pl-2">
+            <span class="w-40">Ticket ID:</span>
+            <span>{{ flight.data.TicketId }}</span>
+          </div>
+          <div class="flex items-center text-xs font-semibold text-customPurple mb-0.5 pl-2">
+            <span class="w-40">Ticket Number:</span>
+            <span>{{ flight.data.TicketNumber}}</span>
+          </div>
+          <div class="flex items-center text-xs font-semibold text-customPurple mb-0.5 pl-2">
+            <span class="w-40">Issue Date:</span>
+            <span>{{ flight.data.IssueDate }}</span>
+          </div>
+          <div class="flex items-center text-xs font-semibold text-customPurple mb-0.5 pl-2">
+            <span class="w-40">Validating Airline:</span>
+            <span>{{ flight.data.ValidatingAirline }}</span>
+          </div>
+          <button (click)="viewticketVoucher()" class="absolute bottom-2 right-2 bg-customOrange border-2 border-customPurple hover:bg-customPurple text-white text-sm font-bold py-1 px-2 rounded-lg">
+            View e-Ticket
+          </button>
+        </div>
+        
+        <hr>
+        
+        <h4 class="text-md font-semibold p-1 pl-2 bg-gray-100 rounded-lg underline">Ancillary Services</h4>
+        <table class="mt-2 w-full border border-gray-200 rounded-lg overflow-hidden">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="border-t border-l border-r border-gray-200 p-2 text-xs first:rounded-tl-lg last:rounded-tr-lg">Baggage</th>
+              <th class="border-t border-l border-r border-gray-200 p-2 text-xs first:rounded-tl-lg last:rounded-tr-lg">Seat</th>
+              <th class="border-t border-l border-r border-gray-200 p-2 text-xs first:rounded-tl-lg last:rounded-tr-lg">Meal</th>
+              <th class="border-t border-l border-r border-gray-200 p-2 text-xs first:rounded-tl-lg last:rounded-tr-lg">Special Service</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 p-2 text-xs">{{ flight.data.baggage }}</td>
+              <td class="border border-gray-200 p-2 text-xs">{{ flight.data.seat }}</td>
+              <td class="border border-gray-200 p-2 text-xs">{{ flight.data.meal }}</td>
+              <td class="border border-gray-200 p-2 text-xs">{{ flight.data.specialService }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+</div>
+</div>
+  </div>
+</div>
+      
+      <div class="p-2 relative" *ngIf="activeTab === 'hotels'" >
+        <!-- <h2 class="text-sm font-bold mb-4 text-center">Hotels</h2> -->
+        <!-- Hotel Details -->
+        <!-- <h3 class="text-lg font-bold mb-2">Passenger {{ passengers[selectedTab].id }}</h3> -->
+        <div *ngIf="passengers[selectedTab].hotelDetails && passengers[selectedTab].hotelDetails.length > 0" class="p-4 border rounded-lg mb-4 mt-3">
+  <ng-container *ngFor="let hotel of passengers[selectedTab].hotelDetails; let i=index">
+    <div class="relative mt-0 p-2 rounded">
+      <h3 (click)="toggleAccordion(i)" class="text-md text-left font-bold bg-gray-200 p-1 pl-2 rounded-lg uppercase cursor-pointer">
+        {{ i + 1 }}. {{ hotel.title }} ( {{ hotel.data.Address }})
+      </h3>
+
+      <div *ngIf="activeIndex === i" class="p-2">
+        <h4 class="text-md font-semibold p-1 pl-2 bg-gray-100 rounded-lg underline">Hotel Details</h4>
+        <!-- <table class="min-w-full bg-white mb-4 border b-2">
+          <tbody>
+            <ng-container *ngFor="let chunk of chunkArray(getKeyValuePairs(hotel.data), 2)">
+              <tr>
+                <ng-container *ngFor="let item of chunk">
+                  <td class="text-xs px-2">{{ item.key | titlecase }}:</td>
+                  <td class="text-xs px-2">{{ item.value }}</td>
+                </ng-container>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table> -->
+        <!-- cheee -->
+        <table class="mb-4 w-full border border-gray-200 rounded-lg overflow-hidden">
+          <tbody>
+            <tr>
+           
+                 <td class="p-1 text-xs">
+                <div class="flex mt-1">
+                  <div class="w-1/2 pr-2">Check-In:</div>
+                  <div class="w-1/2 pl-2">{{hotel.data.CheckIn}}</div> 
+                </div>
+                 </td>
+                
+                <td class="p-1 text-xs">
+                <div class="flex mt-1">
+                  <div class="w-1/2 pr-2">Check-Out:</div>
+                  <div class="w-1/2 pl-2">{{hotel.data.CheckOut}}</div>
+                </div>
+              </td>
+
+              <td class=" p-1 text-xs">
+                <div class="flex mt-1">
+                  <div class="w-1/2 pr-2">Nights:</div>
+                  <div class="w-1/2 pl-2">{{hotel.data.Nights}}</div>
+                </div>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+        
+
+        <h4 class="text-md font-semibold p-1 pl-2 bg-gray-100 rounded-lg underline">Room Details</h4>
+        <table class="min-w-full bg-white mb-4 border-b-2">
+          <thead>
+            <tr>
+              <th class="text-xs px-2">Room</th>
+              <th class="text-xs px-2">Room Type</th>
+              <th class="text-xs px-2">No of Travellers</th>
+              <th class="text-xs px-2">Amenities</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let room of hotel.roomdetails">
+              <td class="text-xs px-2">{{ room.data.Room  }}</td>
+              <td class="text-xs px-2">{{ room.data.RoomType }}</td>
+              <td class="text-xs px-2">{{ room.data.RatePlan }}</td>
+              <td class="text-xs px-2">{{ room.data.Amenities}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="flex justify-between items-center p-1 pl-2 rounded-lg bg-gray-100">
+          <h4 class="text-md font-semibold underline">
+            Traveller Details
+          </h4>
+          <button (click)="toggleTravellerDetails()" class="mr-2 text-md text-customOrange underline">
+            {{ showTravellerDetails ? 'Hide Details' : 'Show Details' }}
+          </button>
+        </div>
+        
+        <table class="min-w-full bg-white mb-1 border b-2">
+          <thead>
+            <tr>
+              <th class="text-xs px-2">Lead Traveller</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-xs px-2">Mr. Rishabh Chawla</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div *ngIf="showTravellerDetails">
+          <table class="mt-2 w-full border border-gray-200 rounded-lg overflow-hidden">
+            <tbody>
+              <tr> 
+                <!-- Column 1 -->
+                <td class="border border-gray-200 p-2 text-xs ">
+                  <strong>Room 1-Traveller 1(Adult)</strong> 
+                  <div class="flex">
+                    <div class="w-1/2 pr-2">Name:</div>
+                    <div class="w-1/2 pl-2"></div> 
+                  </div>
+                  <div class="flex">
+                    <div class="w-1/2 pr-2">PAN:</div>
+                    <div class="w-1/2 pl-2"></div> 
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+
+        </div>
+        <button (click)="viewVoucher(selectedHotel)" class="absolute bottom-4 right-4 bg-customOrange border-2 border-customPurple text-white text-xs py-2 px-2 rounded-lg mt-96">View Voucher</button>
+
+        <!-- <button (click)="showVoucherSection(hotel)" class="absolute bottom-4 right-4 bg-customOrange border-2 border-customPurple text-white text-xs py-2 px-2 rounded-lg mt-80">View Voucher</button> -->
+      </div>
+    </div>
+  </ng-container>
+
+
+        </div>
+        
+      </div>
+      
+      
+      <div class="p-2" *ngIf="activeTab === 'sightseeing'">
+    
+                       <!-- Sightseeing Details -->
+<div *ngIf="passengers[selectedTab].sightseeingDetails && passengers[selectedTab].sightseeingDetails.length > 0" class="p-4 border rounded-lg mb-4 mt-3" >
+    <!-- Sightseeing Accordion -->
+    <ng-container *ngFor="let sightseeing of passengers[selectedTab].sightseeingDetails; let i = index">
+      <div class="relative mt-0 rounded p-2">
+        <h3 (click)="toggleAccordion(i)" class="text-md font-bold bg-gray-200 p-1 pl-2 rounded-lg text-left uppercase cursor-pointer">
+          {{ i + 1 }}. {{ sightseeing.title }} ({{ sightseeing.data.city }})
+        </h3>
+  
+        <div *ngIf="activeIndex === i" class="p-4">
+          <h4 class="text-md font-semibold p-1 pl-2 bg-gray-100 rounded-lg underline">Sightseeing Details</h4>
+          <!-- <table class="min-w-full bg-white mb-4">
+            <tbody>
+              <ng-container *ngFor="let chunk of chunkArray(getKeyValuePairs(sightseeing.data), 2)">
+                <tr>
+                  <ng-container *ngFor="let item of chunk">
+                    <td class="text-xs px-2">{{ item.key | titlecase }}:</td>
+                    <td class="text-xs px-2">{{ item.value }}</td>
+                  </ng-container>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table> -->
+
+          <table class="mb-4 w-full border border-gray-200 rounded-lg overflow-hidden">
+            <tbody>
+              <tr>
+                <!-- Column 1 -->
+                <!-- <td class="border border-gray-200 p-1 text-xs">
+                  <div class="flex">
+                    <div class="w-1/2 pr-2">Name:</div>
+                    <div class="w-1/2 pl-2">{{sightseeing.title}}</div> 
+                  </div>
+                  
+                  <div class="flex mt-1">
+                    <div class="w-1/2 pr-2">Address:</div>
+                    <div class="w-1/2 pl-2">{{sightseeing.data.city}}</div>
+                  </div>
+                </td> -->
+                  
+                   <!-- Column 2 -->
+                <td class="p-1 text-xs">
+                  <div class="flex mt-1">
+                    <div class="w-1/2 pr-2">Date:</div>
+                    <div class="w-1/2 pl-2">{{sightseeing.data.Date}}</div> 
+                  </div>
+                  </td>
+                  
+                  <td class="p-1 text-xs">
+                  <div class="flex mt-1">
+                    <div class="w-1/2 pr-2">Time:</div>
+                    <div class="w-1/2 pl-2">{{sightseeing.data.time}} </div> 
+                  </div>
+                  </td>
+
+                  <td class="p-1 text-xs">
+                  <div class="flex mt-1">
+                    <div class="w-1/2 pr-2">Duration:</div>
+                    <div class="w-1/2 pl-2">{{sightseeing.data.Duration}}</div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <h4 class="text-md font-semibold p-1 pl-2 rounded-lg bg-gray-100 underline">Traveller Details</h4>
+          <table class="min-w-full bg-white mb-16 border b-2">
+            <thead>
+              <tr>
+                <th class="text-xs px-2">Lead Traveller</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-xs px-2">Mr. Rishabh Chawla</td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <button (click)="viewsightVoucher()" class="absolute bottom-4 right-4 bg-customOrange border-2 border-customPurple text-white text-xs py-2 px-2 rounded-lg mt-80">View Voucher</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+      </div>
+    <!-- </div> -->
+  
+  
+  </div>
+  </div>
+</div>
+
+<!-- fourth div for policies -->
+<div class="flex flex-col w-full mb-4 ml-2 mr-4 border-customPurple">
+<!-- Card 1: Policies -->
+<div class="bg-white text-sm text-customPurple shadow-md rounded-lg mb-4 ml-2 mr-4 border border-customPurple">
+  <div class="px-4 py-1 border-b border-customPurple text-center bg-gray-200 text-lg font-bold">
+    <!-- Policies -->
+     Terms and Conditions
+  </div>
+  <div class="max-w-full mx-auto bg-white shadow-lg rounded-lg text-customPurple p-2">
+    <div class="flex border-b rounded-lg ">
+      <button 
+        class="w-1/5 text-center font-semibold py-1 text-md border-r border-customPurple cursor-pointer px-4 rounded-lg" 
+        [class.font-bold]="activeTab1 === 'flights'" 
+        [class.bg-customPurple]="activeTab1 === 'flights'"
+        [class.text-white]="activeTab1 === 'flights'"
+        (click)="setActiveTab1('flights')">Flights</button>
+      <button 
+        class="w-1/5 text-center font-semibold py-1 text-md border-r border-customPurple cursor-pointer px-4 rounded-lg" 
+        [class.font-bold]="activeTab1 === 'hotels'" 
+        [class.bg-customPurple]="activeTab1 === 'hotels'"
+        [class.text-white]="activeTab1 === 'hotels'"
+        (click)="setActiveTab1('hotels')">Hotels</button>
+      <button 
+        class="w-1/5 text-center py-1 font-semibold text-md border-customPurple cursor-pointer px-4 rounded-lg" 
+        [class.font-bold]="activeTab1 === 'sightseeing'" 
+        [class.bg-customPurple]="activeTab1 === 'sightseeing'"
+        [class.text-white]="activeTab1 === 'sightseeing'"
+        (click)="setActiveTab1('sightseeing')">Sightseeing</button>
+    </div>
+    
+    <div class="p-4" *ngIf="activeTab1 === 'flights'">
+    
+      <div *ngFor="let flight of flightData">
+        <div class="border rounded mb-2">
+          <div 
+            class="p-2 bg-gray-200 text-customPurple cursor-pointer rounded-lg" 
+            (click)="flight.open = !flight.open">
+            {{ flight.title }}
+          </div>
+         
+          <div *ngIf="flight.open" class="p-2 border-t rounded-lg">
+            <p class="bg-gray-200 text-customPurple underline font-semibold text-md rounded-lg p-1 pl-2">Cancellation Policy</p>
+            <ol class="text-sm pl-3">
+              <li *ngFor="let point of flight.cancellationPolicy.points">{{ point }}</li>
+            </ol>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="p-4" *ngIf="activeTab1 === 'hotels'">
+      
+      <div *ngFor="let hotel of hotelData">
+        <div class="border rounded mb-2">
+          <div 
+            class="p-2 bg-gray-200 text-white cursor-pointer rounded-lg" 
+            (click)="hotel.open = !hotel.open">
+            {{ hotel.title }}
+          </div>
+         
+          <div *ngIf="hotel.open" class="p-2 border-t rounded-lg">
+            <p class="bg-gray-200 text-customPurple underline font-semibold text-md rounded-lg p-1 pl-2">Cancellation Policy</p>
+            <ol class="text-sm pl-3">
+              <li *ngFor="let point of hotel.cancellationPolicy.points">{{ point }}</li>
+            </ol>
+            
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="p-4" *ngIf="activeTab1 === 'sightseeing'">
+      
+      <div *ngFor="let sight of sightseeingData">
+        <div class="border rounded mb-2">
+          <div 
+            class="p-2 bg-gray-200 text-white cursor-pointer rounded-lg" 
+            (click)="sight.open = !sight.open">
+            {{ sight.title }}
+          </div>
+          
+          <div *ngIf="sight.open" class="p-2 border-t rounded-lg">
+            <p class="bg-gray-200 text-customPurple underline font-semibold text-md rounded-lg p-1 pl-2">Cancellation Policy</p>
+            <ol class="text-sm pl-3">
+              <li *ngFor="let point of sight.cancellationPolicy.points">{{ point }}</li>
+            </ol>
+            
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card 2: Footer -->
+
+    <!-- Content for the footer -->
+    <div class="bg-gray-200 text-customPurple shadow-md rounded-lg mb-4 ml-2 mr-4 p-2">
+      <div class="grid grid-cols-12 gap-2.5">
+    
+        <!-- <div class="col-span-3 flex items-center justify-start">
+          <img class="h-1/2 w-2/3" src="assets\img\route-maestro-logo.png" alt="Logo">
+        </div> -->
+
+        <!-- <div class="col-span-4 flex text-customPurple flex-col items-center justify-start">
+          <p class="font-bold text-lg mb-4 text-white underline text-center">Terms and Conditions</p>
+          <ul class="list-disc list-inside text-sm">
+            <li>Point 1</li>
+            <li>Point 2</li>
+            <li>Point 3</li>
+          </ul>
+        </div> -->
+
+        <div class="col-span-8 text-customPurple flex items-center justify-end">
+          <div class="flex text-customPurple">
+              
+              <span class="mr-4 text-sm font-semibold">abc@example.com</span>
+              <span class="mr-4 text-sm font-semibold">+1234567890</span>
+            
+              <a href="https://www.facebook.com/your-profile" target="_blank" class="text-customPurple text-sm mr-4 font-semibold">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a href="https://www.instagram.com/your-profile" target="_blank" class="text-customPurple text-sm mr-4 font-semibold">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="text-customPurple text-sm mr-4 font-semibold">
+                <i class="fab fa-linkedin"></i>
+              </a>
+
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- cancellation modal -->
+<div *ngIf="showModal" class="mt-36 fixed inset-0 flex items-center justify-center">
+  <div class="bg-white rounded-lg shadow-lg p-3 max-w-xl w-full border-2 border-customPurple">
+    <button class="text-gray-500 hover:text-black float-right text-md font-bold" (click)="closeModal()">&times;</button>
+    <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> -->
+     <!-- Package Cancellation -->
+      <div class="pl-4 md:pl-6 mt-2">
+        <h2 class="text-md text-customOrange font-semibold mb-4 text-center">Package Cancellation Policy</h2>
+        <p class="mb-2 text-xs">
+          We understand that plans can change. If you need to cancel your travel package, please note the following:
+        </p>
+        <ul class="list-disc pl-5 mb-2">
+          <li class="text-xs">Cancelations made more than 30 days before departure will receive a full refund minus a 10% processing fee.</li>
+          <li class="text-xs">Cancelations made between 15 and 30 days before departure will incur a 50% cancellation fee.</li>
+          <li class="text-xs">Cancelations made within 14 days of departure will not be eligible for a refund.</li>        
+        </ul>
+      </div>
+    <!-- </div> -->
+    
+    <hr class="my-2">
+    <!-- <div class="flex justify-center mb-3">
+      <button class="text-customOrange hover:text-black text-lg font-semibold" (click)="calculateCancellationRefund()">Calculate Refund</button>
+    </div> -->
+    <div class="container mx-auto p-4 mt-2">
+      <!-- Package Name -->
+      <div class="mb-2">
+        <h2 class="text-md font-bold">Package Name: Amazing Travel Package</h2>
+      </div>
+    
+      <!-- Table -->
+      <div class="overflow-x-auto mb-1">
+        <table class="min-w-full border-collapse border border-gray-200 text-xs">
+          <thead>
+            <tr>
+              <!-- <th class="border border-gray-200 px-4 py-2">Date</th> -->
+              <th class="border border-gray-200 px-4 py-2">Package Cost</th>
+              <!-- <th class="border border-gray-200 px-4 py-2">Cancellation Charges</th> -->
+              <th class="border border-gray-200 px-4 py-2">Refund Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <!-- <td class="border border-gray-200 px-4 py-2">25-Jan-2024</td> -->
+                  <td class="border border-gray-200 px-4 py-2">5000</td>
+                  <!-- <td class="border border-gray-200 px-4 py-2">10%</td> -->
+                  <td class="border border-gray-200 px-4 py-2">4500</td>
+                </tr>
+          </tbody>
+        </table>
+      </div>
+    
+      <!-- CTA Button -->
+      <div class="flex justify-end">
+        <button class="bg-customOrange border-customPurple border-2 text-white text-xs py-2 px-2 rounded">Confirm Cancellation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loader -->
+  <!-- <div *ngIf="loading" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="w-16 h-16 border-4 border-t-transparent border-red-600 border-solid rounded-full animate-spin"></div>
+  </div> -->
+</div>
+
+<body>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const tabs = document.querySelectorAll('.tab-item');
+          const panels = document.querySelectorAll('.tab-panel');
+
+          tabs.forEach(tab => {
+              tab.addEventListener('click', function() {
+                  tabs.forEach(t => t.classList.remove('text-blue-500', 'border-blue-500', 'active'));
+                  panels.forEach(p => p.classList.add('hidden'));
+
+                  tab.classList.add('text-blue-500', 'border-blue-500', 'active');
+                  const panelId = tab.getAttribute('data-tab');
+                  document.getElementById(panelId).classList.remove('hidden');
+              });
+          });
+      });
+  </script>
+</body>
+
+<!-- Other content of your PackageGenerateComponent -->
+<!-- SHOWVOUCHER FOR HOTEL VOUCHER -->
+<!-- <app-voucher [showVoucher]="showVoucher" [selectedHotel]="selectedHotel"></app-voucher> -->
+
+<!-- voucher for e-ticket -->
+<!-- <app-voucher-ticket [showticketVoucher]="showticketVoucher" [selectedFlight]="selectedFlight"></app-voucher-ticket> -->
+
+<!-- voucher for sightseeing -->
+<!-- <app-voucher-sightseeing [showsightVoucher]="showsightVoucher" [selectedSight]="selectedSight"></app-voucher-sightseeing> -->
+
+
+<!-- modal for fare rules -->
+<div class="fixed inset-0 flex justify-center items-center mt-36 rounded-lg" *ngIf="isModalVisible">
+  <div class="bg-white p-3 rounded-lg shadow-lg  w-1/2 max-w-3xl relative border-2 border-customPurple">
+    <button (click)="closefareModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-xl p-2">
+      &times;
+    </button>
+    <h2 class="text-md font-semibold mb-1 text-center text-red-500 underline">Fare Rules</h2>
+    <div>
+      <h3 class="text-sm font-semibold text-center">Domestic Fare</h3>
+      <!-- <p class="text-xs"><strong>Fare Basis Code:</strong> {{ fareRules.domestic.fareBasisCode }}</p> -->
+      <p class="text-xs text-center"><strong>Booking Class:</strong> Saver Fare</p>
+      <!-- <p class="text-xs"><strong>Number of Sectors:</strong> {{ fareRules.domestic.sectors }}</p> -->
+      <p class="text-xs text-center"><strong>Change Fee:</strong> {{ fareRules.domestic.changeFee }}</p>
+      <p class="text-xs text-center"><strong>Cancellation Fee:</strong> {{ fareRules.domestic.cancellationFee }}</p>
+      <p class="text-xs text-center"><strong>Baggage Allowance:</strong> {{ fareRules.domestic.baggageAllowance }}</p>
+
+      <!-- <h3 class="text-md font-semibold mt-1">International Fare</h3> -->
+      <!-- <p class="text-xs"><strong>Fare Basis Code:</strong> {{ fareRules.international.fareBasisCode }}</p> -->
+      <!-- <p class="text-xs"><strong>Booking Class:</strong> Saver Fare</p> -->
+      <!-- <p class="text-xs"><strong>Number of Sectors:</strong> {{ fareRules.international.sectors }}</p> -->
+      <!-- <p class="text-xs"><strong>Change Fee:</strong> {{ fareRules.international.changeFee }}</p> -->
+      <!-- <p class="text-xs"><strong>Cancellation Fee:</strong> {{ fareRules.international.cancellationFee }}</p> -->
+      <!-- <p class="text-xs"><strong>Baggage Allowance:</strong></p> -->
+      <!-- <ul class="list-disc list-inside ml-4 text-xs"> -->
+        <!-- <li *ngFor="let allowance of fareRules.international.baggageAllowance"> -->
+          <!-- {{ allowance }} -->
+        <!-- </li> -->
+      <!-- </ul> -->
+
+      <h3 class="text-sm font-semibold mt-1 text-center">Additional Information</h3>
+      <p class="text-xs text-center"><strong>Other Charges:</strong> {{ fareRules.otherCharges }}</p>
+      <p class="text-xs text-center"><strong>Domestic Booking Request Time:</strong> {{ fareRules.requestTimes.domestic }}</p>
+      <p class="text-xs text-center"><strong>International Booking Request Time:</strong> {{ fareRules.requestTimes.international }}</p>
+    </div>
+  </div>
+</div>

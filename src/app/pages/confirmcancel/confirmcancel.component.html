@@ -1,0 +1,74 @@
+<!-- confirmcancel.component.html -->
+<div class="container mx-auto pl-6 pr-6 pt-3 pb-4 mt-24">
+  <div class="bg-white shadow-md rounded-lg p-2">
+    <h2 class="text-md text-center text-customPurple font-bold mb-4">Package Cancellation Policy</h2>
+
+    <div *ngIf="combinedPolicy">
+      <p class="mb-2">
+        <span class="font-semibold">Last Cancellation Date:</span> {{ combinedPolicy.lastCancellationDate | date:'dd MMM yyyy' }}
+      </p>
+
+      <div class="border-t border-gray-300 mt-2">
+        <h3 class="text-sm text-customPurple font-bold mt-2 mb-2">Cancellation Policies:</h3>
+
+        <div *ngFor="let policy of combinedPolicy.cancellationPolicies">
+          <p class="text-sm mb-2">
+            <span class="font-semibold">Cancellation made</span> from 
+            <span class="font-semibold">{{ policy.fromDate | date:'dd MMM yyyy' }}</span> 
+            to 
+            <span class="font-semibold">{{ policy.toDate | date:'dd MMM yyyy' }}</span>
+            will incur
+            <span class="font-semibold">{{ policy.charge }}%</span> charges.
+          </p>
+          <!-- <p class="text-sm text-gray-500">
+            Cancellations made during this period will incur a 
+            <span class="font-semibold">{{ policy.charge }}%</span> charge.
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!combinedPolicy">
+      <p>No package policy available.</p>
+    </div>
+  </div>
+<!-- cancellation -->
+<!-- <hr class="my-2"> -->
+<!-- <div class="flex justify-center mb-3">
+  <button class="text-customOrange hover:text-black text-lg font-semibold" (click)="calculateCancellationRefund()">Calculate Refund</button>
+</div> -->
+<div class="container mx-auto p-2 mt-1">
+  <!-- Package Name -->
+  <div class="mb-2 mt-2">
+    <h2 class="text-md font-bold text-center">Package Name: Summer Fun Travel Package</h2>
+  </div>
+
+  <!-- Table -->
+  <div class="overflow-x-auto mb-1">
+    <table class="min-w-full border-collapse border border-gray-200 text-xs">
+      <thead>
+        <tr>
+          <th class="border border-gray-200 px-4 py-2">Cancellation Date</th>
+          <th class="border border-gray-200 px-4 py-2">Package Cost</th>
+          <th class="border border-gray-200 px-4 py-2">Cancellation Charges</th>
+          <th class="border border-gray-200 px-4 py-2">Refund Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td class="border border-gray-200 px-4 py-2">{{ cancellationDate | date:'dd MMM yyyy' }}</td>
+            <td class="border border-gray-200 px-4 py-2">{{ packageCost }}</td>
+            <td class="border border-gray-200 px-4 py-2">{{ cancellationChargePercentage }}%</td>
+            <td class="border border-gray-200 px-4 py-2">{{ refundAmount }}</td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CTA Button -->
+  <div class="flex justify-end mt-2">
+    <button class="bg-customOrange border-customPurple border-2 text-white text-xs py-2 px-2 rounded">Confirm Cancellation</button>
+  </div>
+</div>
+</div>
+
+
