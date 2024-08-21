@@ -33,7 +33,7 @@ import { VouchersComponent } from 'src/app/pages/vouchers/vouchers.component';
 import { ConfirmcancelComponent } from 'src/app/pages/confirmcancel/confirmcancel.component';
 import { VoucherSightseeingComponent } from 'src/app/pages/voucher-sightseeing/voucher-sightseeing.component';
 import { VoucherTicketComponent } from 'src/app/pages/voucher-ticket/voucher-ticket.component';
-
+import { DashboardAgentComponent } from 'src/app/pages/dashboard-agent/dashboard-agent.component';
 export const AdminLayoutRoutes: Routes = [
 
   //testee
@@ -80,5 +80,7 @@ export const AdminLayoutRoutes: Routes = [
 {path:"app-vouchers",component:VouchersComponent},
 {path:"app-confirmcancel",component:ConfirmcancelComponent},
 {path:"app-voucher-sightseeing",component:VoucherSightseeingComponent},
-{path:"app-voucher-ticket",component:VoucherTicketComponent}
+{path:"app-voucher-ticket",component:VoucherTicketComponent},
+{path:"app-dashboard-agent",component:DashboardAgentComponent}
+
 ];

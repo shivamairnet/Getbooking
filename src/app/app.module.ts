@@ -72,6 +72,8 @@ import { TestComponent } from './test/test.component';
 import { TesterComponent } from './pages/tester/tester.component';
 import { VoucherSightseeingComponent } from './pages/voucher-sightseeing/voucher-sightseeing.component';
 import { VoucherTicketComponent } from './pages/voucher-ticket/voucher-ticket.component';
+import { DashboardAgentComponent } from './pages/dashboard-agent/dashboard-agent.component';
+import { SidebarmainComponent } from './pages/sidebarmain/sidebarmain.component';
 
 
 
@@ -151,6 +153,8 @@ import { VoucherTicketComponent } from './pages/voucher-ticket/voucher-ticket.co
     TesterComponent,
     VoucherSightseeingComponent,
     VoucherTicketComponent,
+    DashboardAgentComponent,
+    SidebarmainComponent,
 
     
 

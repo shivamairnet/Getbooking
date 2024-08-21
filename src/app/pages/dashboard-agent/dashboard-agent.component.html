@@ -1,0 +1,314 @@
+
+<div class="flex mt-24 mb-2">
+    <!-- content for dashboard -->
+<div class="p-3 bg-white shadow-lg rounded-lg">
+  <!-- First Row - Total Sales and Time Filters -->
+  <div class="flex flex-wrap justify-between items-center mb-1 border-gray-400">
+    <div class="flex items-end">
+      <p class="text- font-bold text-gray-800 mr-4">Total Sales</p>
+      <div>
+        <p class="text-lg font-semibold text-gray-700">₹234.85</p>
+        <p class="text-sm font-semibold text-gray-700" style="text-decoration: underline;">May - Jul</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-2 shadow-md" style="border-color: gray;">
+      <button class="bg-white text-center p-2 border-r-2 border-gray-200 flex flex-col items-center">
+        <p class="text-xs text-black font-semibold">This Week</p>
+        <p class="text-xs text-black font-semibold">01 AUG — 06 AUG</p>
+      </button>
+      <button class="bg-white text-center p-2 border-r-2 border-gray-200 flex flex-col items-center">
+        <p class="text-xs text-black font-semibold">This Month</p>
+        <p class="text-xs text-black font-semibold">AUGUST</p>
+      </button>
+      <button class="bg-red-500 text-white text-center p-2 rounded-md shadow-md flex flex-col items-center">
+        <p class="text-xs text-black font-semibold">This Quarter</p>
+        <p class="text-xs text-black font-semibold">MAY — JUL</p>
+      </button>
+      <button class="bg-white text-center p-2 border-r-2 border-gray-200 flex flex-col items-center">
+        <p class="text-xs text-black font-semibold">This Year</p>
+        <p class="text-xs text-black font-semibold">2024</p>
+      </button>
+      <button class="bg-white text-center p-2 border-r-2 border-gray-200 flex flex-col items-center">
+        <p class="text-xs text-black font-semibold">Select Date</p>
+      </button>
+    </div>
+  </div>
+
+  <hr style="border: 1px solid gray;">
+  <!-- Second Row - Stats Summary -->
+  <div class="grid grid-cols-5 gap-2 mb-1">
+    <div class="p-1 bg-white border-r-2 border-gray-200 flex flex-col items-center">
+      <p class="text-xs font-bold text-gray-800">Total Bookings</p>
+      <div class="flex items-center">
+        <img src="assets\img\Dashboard icons\Total Bookings.svg" alt="Icon" class="w-8 h-12 mr-2">
+        <p class="text-sm font-bold text-gray-800">80</p>
+      </div>
+      <button class="mt-1 text-blue-500 text-xs" style="text-decoration: underline;">VIEW DETAILED REPORT</button>
+    </div>
+    <div class="p-1 bg-white border-r-2 border-gray-200 flex flex-col items-center">
+      <p class="text-xs font-bold text-gray-800 text-center">Total Itineraries Created</p>
+      <div class="flex items-center">
+        <img src="assets\img\Dashboard icons\Itinerary.svg" alt="Icon" class="w-8 h-12 mr-2">
+        <p class="text-sm font-bold text-gray-800">80</p>
+      </div>
+      <button class="mt-1 text-blue-500 text-xs" style="text-decoration: underline;">VIEW DETAILED REPORT</button>
+    </div>
+    <div class="p-1 bg-white border-r-2 border-gray-200 flex flex-col items-center">
+      <p class="text-xs font-bold text-gray-800">Total Sales</p>
+      <div class="flex items-center">
+        <img src="assets\img\Dashboard icons\Total Sales.svg" alt="Icon" class="w-8 h-12 mr-2">
+        <p class="text-sm font-bold text-gray-800">₹1234.85</p>
+      </div>
+      <button class="mt-1 text-blue-500 text-xs" style="text-decoration: underline;">VIEW DETAILED REPORT</button>
+    </div>
+    <div class="p-1 bg-white border-r-2 border-gray-200 flex flex-col items-center">
+      <p class="text-xs font-bold text-gray-800 text-center">Commission Earned</p>
+      <div class="flex items-center">
+        <img src="assets\img\Dashboard icons\Commission Earned.svg" alt="Icon" class="w-8 h-12 mr-2">
+        <p class="text-sm font-bold text-gray-800">₹1234.85</p>
+      </div>
+      <button class="mt-1 text-blue-500 text-xs" style="text-decoration: underline;">VIEW DETAILED REPORT</button>
+    </div>
+    <div class="p-1 bg-white border-r-2 border-gray-200 flex flex-col items-center">
+      <p class="text-xs font-bold text-gray-800">Top Destination</p>
+      <div class="flex items-center">
+        <img src="assets\img\Dashboard icons\Destination.svg" alt="Icon" class="w-8 h-12 mr-2">
+        <p class="text-sm font-bold text-gray-800">Destination Name</p>
+      </div>
+      <button class="mt-1 text-blue-500 text-xs" style="text-decoration: underline;">VIEW DETAILED REPORT</button>
+    </div>
+  </div>
+  <hr style="border: 1px solid gray;">
+  <!-- Third Row - Detailed Tables -->
+  <div class="grid grid-cols-2 gap-2">
+    <div class="bg-white p-4 border border-gray-200 rounded-lg shadow flex flex-col h-full">
+      <div class="flex justify-between items-center mb-2">
+        <div class="flex items-center mb-2">
+          <img src="assets\img\Dashboard icons\Destination.svg" alt="Icon" class="w-12 h-12 mr-2">
+          <p class="font-semibold text-gray-700">Top Destination Visits</p>
+        </div>
+        <div>
+          <input type="text" id="date-range" class="text-xs text-blue-500 border border-gray-300 rounded p-1" placeholder="Select Date Range">
+        </div>
+        <!-- <p class="font-semibold text-gray-700">Top Destination Visits</p> -->
+        <!-- <button class="text-xs text-blue-500">Apr - Jul 2024</button> -->
+      </div>
+      
+      <table class="w-full text-left text-[0.795rem] text-gray-700">
+        <thead>
+          <tr class="border-b border-gray-200">
+            <th class="py-2">DESTINATION NAME</th>
+            <th class="py-2">NO. OF BOOKINGS</th>
+            <th class="py-2">%AGE of TOTAL BOOKINGS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">Destination Name</td>
+            <td class="py-2">50</td>
+            <td class="py-2">50%</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">Destination Name</td>
+            <td class="py-2">30</td>
+            <td class="py-2">30%</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">Destination Name</td>
+            <td class="py-2">20</td>
+            <td class="py-2">10%</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="text-blue-500 text-xs mt-auto self-start" style="text-decoration: underline;">VIEW DETAILED REPORT</button>
+    </div>
+
+    <div class="bg-white p-4 border border-gray-200 rounded-lg shadow flex flex-col h-full">
+      <!-- <p class="font-semibold text-gray-700 mb-2">Supplier Confirmation</p> -->
+      <div class="flex items-center mb-2">
+        <img src="assets\img\Dashboard icons\Supplier Information.svg" alt="Icon" class="w-12 h-12 mr-2">
+        <p class="font-semibold text-gray-700">Supplier Confirmation</p>
+      </div>
+      <table class="w-full text-left text-[0.795rem] text-gray-700">
+        <thead>
+          <tr class="border-b border-gray-200">
+            <th class="py-2">SR. NO.</th>
+            <th class="py-2">PACKAGE ID</th>
+            <th class="py-2">PACKAGE NAME</th>
+            <th class="py-2">SUPPLIER NAME</th>
+            <th class="py-2">REQUEST STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">1</td>
+            <td class="py-2">Package ID</td>
+            <td class="py-2">Package Name</td>
+            <td class="py-2">Supplier Name</td>
+            <td class="py-2 text-yellow-500">Pending</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">2</td>
+            <td class="py-2">Package ID</td>
+            <td class="py-2">Package Name</td>
+            <td class="py-2">Supplier Name</td>
+            <td class="py-2 text-red-500">Closed</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">3</td>
+            <td class="py-2">Package ID</td>
+            <td class="py-2">Package Name</td>
+            <td class="py-2">Supplier Name</td>
+            <td class="py-2 text-green-500">In Progress</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">4</td>
+            <td class="py-2">Package ID</td>
+            <td class="py-2">Package Name</td>
+            <td class="py-2">Supplier Name</td>
+            <td class="py-2 text-red-500">Closed</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="text-blue-500 text-xs mt-auto self-start" style="text-decoration: underline;">VIEW DETAILED REPORT</button>
+    </div>
+    
+    <div class="bg-white p-4 border border-gray-200 rounded-lg shadow flex flex-col h-full">
+      <div class="flex items-center mb-2">
+        <img src="assets\img\Dashboard icons\Supplier Information.svg" alt="Icon" class="w-12 h-12 mr-2">
+        <p class="font-semibold text-gray-700">Trips & Progress</p>
+      </div>
+      <!-- <p class="font-semibold text-gray-700 mb-2">Trips & Progress</p> -->
+      <table class="w-full text-left text-[0.795rem] text-gray-700">
+        <thead>
+          <tr class="border-b border-gray-200">
+            <th class="py-2">CUSTOMER NAME</th>
+            <th class="py-2">TRIP START DATE</th>
+            <th class="py-2">TRIP END DATE</th>
+            <th class="py-2">TRIP STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">Customer Name</td>
+            <td class="py-2">dd/mm/yyyy</td>
+            <td class="py-2">dd/mm/yyyy</td>
+            <td class="py-2 text-yellow-400">Yet To Start</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">Customer Name</td>
+            <td class="py-2">dd/mm/yyyy</td>
+            <td class="py-2">dd/mm/yyyy</td>
+            <td class="py-2 text-purple-600">On Trip</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">Customer Name</td>
+            <td class="py-2">dd/mm/yyyy</td>
+            <td class="py-2">dd/mm/yyyy</td>
+            <td class="py-2 text-green-600">Completed</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-2">Customer Name</td>
+            <td class="py-2">dd/mm/yyyy</td>
+            <td class="py-2">dd/mm/yyyy</td>
+            <td class="py-2 text-green-600">Completed</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="text-blue-500 text-xs mt-auto self-start" style="text-decoration: underline;">VIEW DETAILED REPORT</button>
+    </div>
+    
+<div class="bg-white p-4 border border-gray-200 rounded-lg shadow flex flex-col h-full">
+  <div class="flex flex-col h-full">
+    <div class="flex items-center mb-2">
+ 
+      <img src="assets/img/Dashboard icons/Sales Report.svg" alt="Icon" class="w-12 h-12 mr-2">
+      <p class="font-semibold text-gray-700">Sales Reports</p>
+    </div>
+    <div class="flex-1 overflow-y-auto">
+    <table class="w-full text-left text-[0.795rem] text-gray-700 mb-2">
+      <thead>
+        <tr class="border-b border-gray-200">
+          <th class="py-2">SR. NO.</th>
+          <th class="py-2">PACKAGE ID</th>
+          <th class="py-2">PACKAGE NAME</th>
+          <th class="py-2">TOTAL SALES</th>
+          <th class="py-2">MARK UP</th>
+          <th class="py-2">MARK UP %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-gray-200">
+          <td class="py-2">1</td>
+          <td class="py-2">Package Id</td>
+          <td class="py-2">Package Name</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">6%</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="py-2">2</td>
+          <td class="py-2">Package Id</td>
+          <td class="py-2">Package Name</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">4.2%</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="py-2">2</td>
+          <td class="py-2">Package Id</td>
+          <td class="py-2">Package Name</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">4.2%</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="py-2">2</td>
+          <td class="py-2">Package Id</td>
+          <td class="py-2">Package Name</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">4.2%</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="py-2">3</td>
+          <td class="py-2">Package Id</td>
+          <td class="py-2">Package Name</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">3.5%</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="py-2">3</td>
+          <td class="py-2">Package Id</td>
+          <td class="py-2">Package Name</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">3.5%</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="py-2">3</td>
+          <td class="py-2">Package Id</td>
+          <td class="py-2">Package Name</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">3.5%</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="py-2">3</td>
+          <td class="py-2">Package Id</td>
+          <td class="py-2">Package Name</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">₹1234.85</td>
+          <td class="py-2">3.5%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="text-blue-500 text-xs mt-2 self-start" style="text-decoration: underline;">VIEW DETAILED REPORT</button>
+</div>
+
+  </div>
+
+  </div>
+  
